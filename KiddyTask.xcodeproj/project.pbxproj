@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F7D7D90C2E26C4DA00FC6E4A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F7D7D90A2E26C4DA00FC6E4A /* Model.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		F7D7D8A22E25987300FC6E4A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		F7D7D8942E25987100FC6E4A /* KiddyTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KiddyTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7D7D8A12E25987300FC6E4A /* KiddyTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KiddyTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7D7D8AB2E25987300FC6E4A /* KiddyTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KiddyTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7D7D90B2E26C4DA00FC6E4A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -65,6 +70,7 @@
 		F7D7D88B2E25987100FC6E4A = {
 			isa = PBXGroup;
 			children = (
+				F7D7D90A2E26C4DA00FC6E4A /* Model.xcdatamodeld */,
 				F7D7D8962E25987100FC6E4A /* KiddyTask */,
 				F7D7D8952E25987100FC6E4A /* Products */,
 			);
@@ -218,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7D7D90C2E26C4DA00FC6E4A /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,6 +547,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F7D7D90A2E26C4DA00FC6E4A /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F7D7D90B2E26C4DA00FC6E4A /* Model.xcdatamodel */,
+			);
+			currentVersion = F7D7D90B2E26C4DA00FC6E4A /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F7D7D88C2E25987100FC6E4A /* Project object */;
 }

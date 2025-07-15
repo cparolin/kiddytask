@@ -10,6 +10,8 @@ import SwiftUI
 struct HomeView: View {
     
     @State var tarefas: [CGFloat] = [1, 2, 3, 4, 5]
+    @State private var showingSheet = false
+    @ObservedObject var viewModel = ContentViewModel()
     
     let columns = [
         GridItem(.flexible(minimum: 100, maximum: 300))
@@ -31,6 +33,20 @@ struct HomeView: View {
                 }
             }
             .navigationTitle("Home")
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button{
+                        showingSheet.toggle()
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                    .sheet(isPresented: $showingSheet, onDismiss: {
+                        viewModel.getTask()
+                    }) {
+                        AddTaskView()
+                    }
+                }
+            }
         }
     }
 }
