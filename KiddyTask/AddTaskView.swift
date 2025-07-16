@@ -19,7 +19,7 @@ struct AddTaskView: View {
     @State var imageAfter: UIImage?
     @State var desc: String = ""
     @State var isDone: Bool = false
-    @State var clock = Date.now
+    @State var taskTime: Int16 = 0
     @State var why: String = ""
     
     @State private var showingAlert = false
@@ -29,7 +29,7 @@ struct AddTaskView: View {
         NavigationStack{
             VStack{
                 DatePicker(selection: $date,  displayedComponents: .date){
-                    Text("Select a date") //deixar centralizado
+                    /*Text("Select a date")*/ //deixar centralizado
                 }
                 .navigationTitle($name)
                 .navigationBarTitleDisplayMode(.inline)
@@ -40,15 +40,16 @@ struct AddTaskView: View {
                 if imageBefore != nil{
                     Image(uiImage: imageBefore!)
                         .resizable()
-                        .frame(width: 320, height: 320)
+                        .frame(width: 150, height: 150)
                         .scaledToFill()
                         .cornerRadius(20)
                 }
                 
                 TextField("Task Description!", text: $desc, axis: .vertical)
-                    .frame(width: 500, height: 100)
+                    .frame(width: 250, height: 50)
                     .multilineTextAlignment(.center)
                     .lineLimit(5)
+//                    .border(.red)
                 
                 HStack{
                     Text("Why is important to do this task?")
@@ -57,11 +58,17 @@ struct AddTaskView: View {
                 }
                 
                 TextField("Insert yout answer!", text: $why, axis: .vertical)
-                    .frame(width: 500, height: 100)
+                    .frame(width: 250, height: 50)
                     .multilineTextAlignment(.center)
                     .lineLimit(3)
+//                    .border(.red)
 
                 Text("Time to conclude this task ⏰")
+                
+                TextField("Enter your time", value: $taskTime, format: .number)
+                    .textFieldStyle(.roundedBorder)
+                    .padding()
+                    .frame(width: 100, height: 30)
                 
             }
             .alert("You need to add an Image!", isPresented: $showingAlert){
@@ -71,7 +78,7 @@ struct AddTaskView: View {
                 ToolbarItem(placement: .confirmationAction){
                     Button("Add") {
                         if imageBefore != nil {
-                            viewModel.createTask(date: date, desc: desc, imageAfter: imageAfter!, imageBefore: imageBefore!, isDone: isDone, name: name, clock: clock, why: why)
+//                            viewModel.createTask(date: date, desc: desc, imageAfter: imageAfter, imageBefore: imageBefore!, isDone: isDone, name: name, taskTime: taskTime, why: why)
                             dismiss()
                         } else {
                             showingAlert = true

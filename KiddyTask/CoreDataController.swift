@@ -38,7 +38,7 @@ final class CoreDataController {
     }
     
     //CREATE
-    func createTask(date: Date, desc: String, imageAfter: UIImage, imageBefore: UIImage, isDone: Bool, name: String, clock: Date, why: String) -> KidTask{
+    func createTask(date: Date, desc: String, imageAfter: UIImage, imageBefore: UIImage, isDone: Bool, name: String, taskTime: Int16, why: String) -> KidTask{
         let task = KidTask(context: viewContext)
         
         task.date = date
@@ -47,10 +47,11 @@ final class CoreDataController {
         task.imageBefore = imageBefore.jpegData(compressionQuality: 1.0)
         task.isDone = isDone
         task.name = name
-        task.clock = clock
+        task.taskTime = taskTime
         task.why = why
         
         saveContext()
+        print(task)
         return task
     }
     
@@ -68,7 +69,7 @@ final class CoreDataController {
     }
     
     //UPDATE
-    func updateTask(task: KidTask, date: Date, desc: String, imageAfter: UIImage, imageBefore: UIImage, isDone: Bool, name: String, clock: Date, why: String) -> KidTask{
+    func updateTask(task: KidTask, date: Date, desc: String, imageAfter: UIImage, imageBefore: UIImage, isDone: Bool, name: String, taskTime: Int16, why: String) -> KidTask{
         
         task.date = date
         task.desc = desc
@@ -76,7 +77,7 @@ final class CoreDataController {
         task.imageBefore = imageBefore.jpegData(compressionQuality: 1.0)
         task.isDone = isDone
         task.name = name
-        task.clock = clock
+        task.taskTime = taskTime
         task.why = why
         
         saveContext()

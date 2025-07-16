@@ -18,15 +18,15 @@ class ContentViewModel: ObservableObject {
     }
     
     //CREATE
-    func createTask(date: Date, desc: String, imageAfter: UIImage, imageBefore: UIImage, isDone: Bool, name: String, clock: Date, why: String) {
-        let result = CoreDataController.shared.createTask(date: date, desc: desc, imageAfter: imageAfter, imageBefore: imageBefore, isDone: isDone, name: name, clock: clock, why: why)
+    func createTask(date: Date, desc: String, imageAfter: UIImage, imageBefore: UIImage, isDone: Bool, name: String, taskTime: Int16, why: String) {
+        let result = CoreDataController.shared.createTask(date: date, desc: desc, imageAfter: imageAfter, imageBefore: imageBefore, isDone: isDone, name: name, taskTime: taskTime, why: why)
         
         self.tasks.append(result)
     }
     
     //UPDATE
-    func updateTask(task: KidTask, date: Date, desc: String, imageAfter: UIImage, imageBefore: UIImage, isDone: Bool, name: String) {
-        let result = CoreDataController.shared.createTask(date: date, desc: desc, imageAfter: imageAfter, imageBefore: imageBefore, isDone: isDone, name: name, clock: clock, why: why)
+    func updateTask(task: KidTask, date: Date, desc: String, imageAfter: UIImage, imageBefore: UIImage, isDone: Bool, name: String, taskTime: Int16, why: String) {
+        let result = CoreDataController.shared.createTask(date: date, desc: desc, imageAfter: imageAfter, imageBefore: imageBefore, isDone: isDone, name: name, taskTime: taskTime, why: why)
         
         self.tasks.append(result)
     }
