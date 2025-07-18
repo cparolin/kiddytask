@@ -12,9 +12,11 @@ struct PageMemoriesView: View {
     
     @State var task: KidTask?
     
+    
     var body: some View {
         VStack{
             Image("GuardianFelizMemories")
+                .padding(.leading, 450)
             ZStack{
                 Rectangle()
                     .frame(width: 580, height: 771)
@@ -43,6 +45,10 @@ struct PageMemoriesView: View {
                         
                     }
                     
+                }
+                .onAppear {
+                    viewModel.getTask()
+                    print(viewModel.tasks)
                 }
             }
         }
