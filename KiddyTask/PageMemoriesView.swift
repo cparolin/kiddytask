@@ -25,16 +25,23 @@ struct PageMemoriesView: View {
                     .foregroundStyle(Color.white)
                 
                 VStack{
-//                    if task != nil {
+                    if task != nil {
                         
                         Text("Tarefa 2")
                             .font(.system(size: 60))
                         
                     //data
                     
-                    
+                    Text(task!.desc ?? "undefined")
+                        .frame(width: 250, height: 50)
                         
-//                    }
+                        HStack{
+                            Text("Foto Antes 📷")
+                            
+                            Text("Foto Depois 📸")
+                        }
+                        
+                    }
                     
                 }
             }

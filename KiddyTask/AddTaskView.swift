@@ -78,7 +78,7 @@ struct AddTaskView: View {
                 ToolbarItem(placement: .confirmationAction){
                     Button("Add") {
                         if imageBefore != nil {
-//                            viewModel.createTask(date: date, desc: desc, imageAfter: imageAfter, imageBefore: imageBefore!, isDone: isDone, name: name, taskTime: taskTime, why: why)
+                            viewModel.createTask(date: date, desc: desc, imageAfter: imageAfter ?? UIImage(), imageBefore: imageBefore ?? UIImage(), isDone: isDone, name: name, taskTime: taskTime, why: why)
                             dismiss()
                         } else {
                             showingAlert = true
