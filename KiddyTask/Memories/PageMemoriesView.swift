@@ -12,7 +12,6 @@ struct PageMemoriesView: View {
     
     @State var task: KidTask?
     
-    
     var body: some View {
         VStack{
             Image("GuardianFelizMemories")

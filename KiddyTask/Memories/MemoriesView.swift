@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct MemoriesView: View {
+
     var body: some View {
-        NavigationStack{
+        
+        NavigationStack() {
             VStack{
                 NavigationLink(destination: PageMemoriesView()) {
-                    Image("Caderno")
+                    ZStack{
+                        Image("Caderno")
+                        Text("Camila")
+                            .font(.system(size: 60))
+                            .foregroundStyle(Color("MemoriesPurple"))
+                            .padding(.bottom, 140)
+                    }
                 }
             }
             .navigationTitle("Memories")
