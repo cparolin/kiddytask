@@ -47,7 +47,7 @@ struct PageMemoriesView: View {
                 }
                 .onAppear {
                     viewModel.getTask()
-                    print(viewModel.tasks)
+                    print(viewModel.kidTasks)
                 }
             }
         }

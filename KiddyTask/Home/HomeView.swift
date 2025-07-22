@@ -9,9 +9,10 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @State var tarefas: [CGFloat] = [1, 2, 3, 4, 5]
     @State private var showingSheet = false
     @ObservedObject var viewModel = ContentViewModel()
+    
+    @Environment(\.dismiss) var dismiss
     
     let columns = [
         GridItem(.flexible(minimum: 100, maximum: 300))
@@ -20,16 +21,19 @@ struct HomeView: View {
     var body: some View {
         NavigationStack{
             VStack{
-                ScrollView{
-                    LazyVGrid(columns: columns, spacing: 30){
+                List {
+//                    LazyVGrid(columns: columns, spacing: 30) {
                         Text(Date(), style: .date) //tirar o ano?
                             .font(.system(size: 40).weight(.heavy))
                             .foregroundStyle(Color("TaskPurple"))
                         
-                        ForEach(tarefas, id: \.self) { tarefa in
-                            TaskRectangleView()
+                        ForEach(viewModel.kidTasks, id: \.self) { kidTask in
+                            TaskRectangleView(kidTask: kidTask)
+                                .swipeActions {
+                                    deleteAction(kidTask: kidTask)
+                                }
                         }
-                    }
+//                    }
                 }
             }
             .navigationTitle("Home")
@@ -47,10 +51,26 @@ struct HomeView: View {
                     }
                 }
             }
+            .onAppear(){
+                viewModel.getTask()
+            }
         }
+    }
+    
+    private func deleteAction(kidTask: KidTask) -> some View {
+        Button(role: .destructive) {
+            viewModel.deleteTask(kidTask: kidTask)
+            dismiss()
+        } label: {
+            VStack{
+                Image(systemName: "wrongwaysign.fill")
+                Text("Delete")
+            }
+        }
+        .tint(.red)
     }
 }
 
-#Preview {
-    HomeView()
-}
+//#Preview {
+//    HomeView()
+//}

@@ -39,20 +39,20 @@ final class CoreDataController {
     
     //CREATE
     func createTask(date: Date, desc: String, imageAfter: UIImage, imageBefore: UIImage, isDone: Bool, name: String, taskTime: Int16, why: String) -> KidTask{
-        let task = KidTask(context: viewContext)
+        let kidTask = KidTask(context: viewContext)
         
-        task.date = date
-        task.desc = desc
-        task.imageAfter = imageAfter.jpegData(compressionQuality: 1.0)
-        task.imageBefore = imageBefore.jpegData(compressionQuality: 1.0)
-        task.isDone = isDone
-        task.name = name
-        task.taskTime = taskTime
-        task.why = why
+        kidTask.date = date
+        kidTask.desc = desc
+        kidTask.imageAfter = imageAfter.jpegData(compressionQuality: 1.0)
+        kidTask.imageBefore = imageBefore.jpegData(compressionQuality: 1.0)
+        kidTask.isDone = isDone
+        kidTask.name = name
+        kidTask.taskTime = taskTime
+        kidTask.why = why
         
         saveContext()
-        print(task)
-        return task
+        print(kidTask)
+        return kidTask
     }
     
     //READ
@@ -69,24 +69,32 @@ final class CoreDataController {
     }
     
     //UPDATE
-    func updateTask(task: KidTask, date: Date, desc: String, imageAfter: UIImage, imageBefore: UIImage, isDone: Bool, name: String, taskTime: Int16, why: String) -> KidTask{
+    func updateTask(kidTask: KidTask, date: Date, desc: String, imageAfter: UIImage, imageBefore: UIImage, isDone: Bool, name: String, taskTime: Int16, why: String) -> KidTask{
         
-        task.date = date
-        task.desc = desc
-        task.imageAfter = imageAfter.jpegData(compressionQuality: 1.0)
-        task.imageBefore = imageBefore.jpegData(compressionQuality: 1.0)
-        task.isDone = isDone
-        task.name = name
-        task.taskTime = taskTime
-        task.why = why
+        kidTask.date = date
+        kidTask.desc = desc
+        kidTask.imageAfter = imageAfter.jpegData(compressionQuality: 1.0)
+        kidTask.imageBefore = imageBefore.jpegData(compressionQuality: 1.0)
+        kidTask.isDone = isDone
+        kidTask.name = name
+        kidTask.taskTime = taskTime
+        kidTask.why = why
         
         saveContext()
-        return task
+        return kidTask
+    }
+    
+    func updateBool(kidTask: KidTask, isDone: Bool) -> KidTask {
+        
+        kidTask.isDone = isDone
+        
+        saveContext()
+        return kidTask
     }
     
     //DELETE
-    func deleteTask(task: KidTask){
-        viewContext.delete(task)
+    func deleteTask(kidTask: KidTask){
+        viewContext.delete(kidTask)
         
         saveContext()
     }

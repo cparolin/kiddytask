@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MemoriesView: View {
+    
+    @AppStorage("kidUsername") var kidUsername: String = ""
 
     var body: some View {
         
@@ -16,7 +18,7 @@ struct MemoriesView: View {
                 NavigationLink(destination: PageMemoriesView()) {
                     ZStack{
                         Image("Caderno")
-                        Text("Camila")
+                        Text("\(kidUsername)")
                             .font(.system(size: 60))
                             .foregroundStyle(Color("MemoriesPurple"))
                             .padding(.bottom, 140)

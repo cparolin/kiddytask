@@ -13,8 +13,7 @@ struct InsertFirstInformationView: View {
     @AppStorage("parentUsername") var parentUsername: String = ""
     @AppStorage("password") var password: String = ""
 //    @State private var path = NavigationPath()
-    
-//    @Binding var tapGo: Bool
+    @AppStorage("tapGo") var tapGo: Bool = false
     
     var body: some View {
         
@@ -40,21 +39,17 @@ struct InsertFirstInformationView: View {
                         }
                     }
                 }
-                .frame(width: 800)
+//                .frame(width: 800)
             }
             .navigationTitle("Let's Start!")
 //            .navigationBarBackButtonHidden(true)
             .toolbar{
                 ToolbarItem(placement: .confirmationAction){
-//                    Button {
-                        NavigationLink(destination: ContentView()){
-                            Text("GO!")
-                            
-                        }
-//                        
-//                    } label: {
-//                        Text("X")
-//                    }
+                    Button{
+                        tapGo = true
+                    } label: {
+                        Text("Go!")
+                    }
                 }
             }
             

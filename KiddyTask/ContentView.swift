@@ -13,7 +13,7 @@ struct ContentView: View {
     @AppStorage("parentUsername") var parentUsername: String = ""
     @AppStorage("password") var password: String = ""
     
-    @State var tapGo: Bool = false
+    @AppStorage("tapGo") var tapGo: Bool = false
     
     var body: some View {
         if (tapGo == false) {
