@@ -29,9 +29,13 @@ struct HomeView: View {
                         
                         ForEach(viewModel.kidTasks, id: \.self) { kidTask in
                             TaskRectangleView(kidTask: kidTask)
-                                .swipeActions {
+                                .swipeActions (edge: .leading) {
                                     deleteAction(kidTask: kidTask)
                                 }
+                                .swipeActions (edge: .trailing) {
+                                    seeTheTask(kidTask: kidTask)
+                                }
+                                .listRowSeparator(.hidden)
                         }
 //                    }
                 }
@@ -69,8 +73,15 @@ struct HomeView: View {
         }
         .tint(.red)
     }
+    
+    private func seeTheTask(kidTask: KidTask) -> some View {
+        NavigationLink(destination: PageMemoriesView(task: kidTask)) {
+            Text("Details")
+        }
+        .tint(.blue)
+    }
 }
 
-//#Preview {
-//    HomeView()
-//}
+#Preview {
+    HomeView()
+}

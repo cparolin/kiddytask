@@ -89,6 +89,16 @@ final class CoreDataController {
         kidTask.isDone = isDone
         
         saveContext()
+        
+        return kidTask
+    }
+    
+    func updateAfterImage(kidTask: KidTask, imageAfter: UIImage) -> KidTask {
+        
+        kidTask.imageAfter = imageAfter.jpegData(compressionQuality: 1.0)
+        
+        saveContext()
+        print(kidTask)
         return kidTask
     }
     

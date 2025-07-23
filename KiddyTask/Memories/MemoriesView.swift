@@ -15,7 +15,7 @@ struct MemoriesView: View {
         
         NavigationStack() {
             VStack{
-                NavigationLink(destination: PageMemoriesView()) {
+                NavigationLink(destination: PagesCarousel() /*PageMemoriesView()*/) {
                     ZStack{
                         Image("Caderno")
                         Text("\(kidUsername)")

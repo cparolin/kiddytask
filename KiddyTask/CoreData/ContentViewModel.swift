@@ -33,6 +33,10 @@ class ContentViewModel: ObservableObject {
         let result = CoreDataController.shared.updateBool(kidTask: kidTask, isDone: isDone)
     }
     
+    func updateImageAfter(kidTask: KidTask, imageAfter: UIImage) {
+        let result = CoreDataController.shared.updateAfterImage(kidTask: kidTask, imageAfter: imageAfter)
+    }
+    
     //DELETE
     func deleteTask(kidTask: KidTask){
         CoreDataController.shared.deleteTask(kidTask: kidTask)

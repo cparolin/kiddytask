@@ -81,6 +81,10 @@ struct TaskRectangleView: View {
                             InsertPasswordView(kidTask: kidTask)
                         }
                         
+//                    NavigationLink(destination: PageMemoriesView(task: kidTask)) {
+//                        Text("See the task ->")
+//                    }
+//                    .padding(.leading, 100)
                
 //                        Button {
 //                            print("antes: \(kidTask.isDone)")

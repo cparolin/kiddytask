@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct PageMemoriesView: View {
     @ObservedObject var viewModel = ContentViewModel()
     
-    @State var task: KidTask?
+    @State var task: KidTask
     
     var body: some View {
         VStack{
@@ -26,34 +27,46 @@ struct PageMemoriesView: View {
                     .foregroundStyle(Color.white)
                 
                 VStack{
-                    if task != nil {
-                        
-                        Text("Tarefa 2")
-                            .font(.system(size: 60))
-                        
-                    //data
                     
-                    Text(task!.desc ?? "undefined")
+                    
+                    Text("\(task.name ?? "noName")")
+                        .font(.system(size: 60))
+                    
+                    Text("Date is \(task.date?.formatted(date: .long, time: .omitted) ?? "noData")")
+                    
+                    Text(task.desc ?? "undefined")
                         .frame(width: 250, height: 50)
-                        
-                        HStack{
+                    
+                    HStack{
+                        VStack{
                             Text("Foto Antes 📷")
-                            
-                            Text("Foto Depois 📸")
+                            Image(uiImage: ((UIImage(data: task.imageBefore ?? Data()) ?? UIImage(named: "photoItem")) ?? UIImage()))
+                                .resizable()
+                                .frame(width: 175, height: 175)
+                                .cornerRadius(24)
                         }
                         
+                        VStack{
+                            Text("Foto Depois 📸")
+                            Image(uiImage: ((UIImage(data: task.imageAfter ?? Data()) ?? UIImage(named: "photoItem")) ?? UIImage()))
+                                .resizable()
+                                .frame(width: 175, height: 175)
+                                .cornerRadius(24)
+                        }
                     }
                     
                 }
-                .onAppear {
-                    viewModel.getTask()
-                    print(viewModel.kidTasks)
-                }
+                
+            }
+            .onAppear {
+                viewModel.getTask()
+//                print(viewModel.kidTasks)
             }
         }
     }
 }
 
-#Preview {
-    PageMemoriesView()
-}
+
+//#Preview {
+//    PageMemoriesView()
+//}
