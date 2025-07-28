@@ -78,7 +78,7 @@ struct TaskRectangleView: View {
                         .sheet(isPresented: $showingSheet, onDismiss: {
                             viewModel.getTask()
                         }) {
-                            InsertPasswordView(kidTask: kidTask)
+                            InsertPasswordImageView(kidTask: kidTask)
                         }
                         
 //                    NavigationLink(destination: PageMemoriesView(task: kidTask)) {

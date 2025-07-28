@@ -32,7 +32,7 @@ struct PageMemoriesView: View {
                     Text("\(task.name ?? "noName")")
                         .font(.system(size: 60))
                     
-                    Text("Date is \(task.date?.formatted(date: .long, time: .omitted) ?? "noData")")
+                    Text("Date is \(task.taskDate?.formatted(date: .long, time: .omitted) ?? "noData")")
                     
                     Text(task.desc ?? "undefined")
                         .frame(width: 250, height: 50)

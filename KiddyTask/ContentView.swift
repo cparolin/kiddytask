@@ -29,7 +29,7 @@ struct ContentView: View {
                     .tabItem{
                         Label("Home", systemImage: "book")
                     }
-                Text("\(kidUsername)")
+                GuardianView()
                     .tabItem{
                         Label("Guardian", systemImage: "book")
                     }

@@ -38,10 +38,10 @@ final class CoreDataController {
     }
     
     //CREATE
-    func createTask(date: Date, desc: String, imageAfter: UIImage, imageBefore: UIImage, isDone: Bool, name: String, taskTime: Int16, why: String) -> KidTask{
+    func createTask(taskDate: Date, desc: String, imageAfter: UIImage, imageBefore: UIImage, isDone: Bool, name: String, taskTime: Int16, why: String) -> KidTask{
         let kidTask = KidTask(context: viewContext)
         
-        kidTask.date = date
+        kidTask.taskDate = taskDate
         kidTask.desc = desc
         kidTask.imageAfter = imageAfter.jpegData(compressionQuality: 1.0)
         kidTask.imageBefore = imageBefore.jpegData(compressionQuality: 1.0)
@@ -69,9 +69,9 @@ final class CoreDataController {
     }
     
     //UPDATE
-    func updateTask(kidTask: KidTask, date: Date, desc: String, imageAfter: UIImage, imageBefore: UIImage, isDone: Bool, name: String, taskTime: Int16, why: String) -> KidTask{
+    func updateTask(kidTask: KidTask, taskDate: Date, desc: String, imageAfter: UIImage, imageBefore: UIImage, isDone: Bool, name: String, taskTime: Int16, why: String) -> KidTask{
         
-        kidTask.date = date
+        kidTask.taskDate = taskDate
         kidTask.desc = desc
         kidTask.imageAfter = imageAfter.jpegData(compressionQuality: 1.0)
         kidTask.imageBefore = imageBefore.jpegData(compressionQuality: 1.0)

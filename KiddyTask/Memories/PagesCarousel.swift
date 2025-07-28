@@ -15,11 +15,12 @@ struct PagesCarousel: View {
         NavigationStack{
             TabView{
                 ForEach(viewModel.kidTasks, id: \.self) { kidTask in
-                    
+//                    if Calendar.current.isDate(kidTask.taskDate, equalTo: Date.now, toGranularity: .day) {
                         PageMemoriesView(task: kidTask)
-                        .tabItem{
-                            Label(kidTask.name ?? "", systemImage: "book")
-                        }
+                            .tabItem{
+                                Label(kidTask.name ?? "", systemImage: "book")
+                            }
+//                    }
                 }
                 
             }
