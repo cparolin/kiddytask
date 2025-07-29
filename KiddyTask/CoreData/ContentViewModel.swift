@@ -11,6 +11,7 @@ import PhotosUI
 
 class ContentViewModel: ObservableObject {
     @Published var kidTasks: [KidTask] = []
+    @Published public var scheduledNotifications: [ScheduledNotification] = []
     
     //FETCH
     func getTask() {
@@ -27,11 +28,20 @@ class ContentViewModel: ObservableObject {
         }
     }
     
+    public func getNotifications() {
+        scheduledNotifications = CoreDataController.shared.fetchScheduledNotifications()
+    }
+    
     //CREATE
     func createTask(taskDate: Date, desc: String, imageAfter: UIImage, imageBefore: UIImage, isDone: Bool, name: String, taskTime: Int16, why: String) {
         let result = CoreDataController.shared.createTask(taskDate: taskDate, desc: desc, imageAfter: imageAfter, imageBefore: imageBefore, isDone: isDone, name: name, taskTime: taskTime, why: why)
         
         self.kidTasks.append(result)
+    }
+    
+    public func createScheduledNotification(id: UUID, date: Date) {
+        let newScheduledNotification: ScheduledNotification = CoreDataController.shared.createScheduledNotification(id: id, date: date)
+        self.scheduledNotifications.append(newScheduledNotification)
     }
     
     //UPDATE
@@ -50,5 +60,9 @@ class ContentViewModel: ObservableObject {
     //DELETE
     func deleteTask(kidTask: KidTask){
         CoreDataController.shared.deleteTask(kidTask: kidTask)
+    }
+    
+    public func deleteScheduledNotification(scheduledNotification: ScheduledNotification) {
+        CoreDataController.shared.deleteNotification(scheduledNotification: scheduledNotification)
     }
 }

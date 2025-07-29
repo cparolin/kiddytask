@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct HomeView: View {
     
     @State private var showingSheet = false
@@ -90,7 +89,7 @@ struct HomeView: View {
     private func deleteAction(kidTask: KidTask) -> some View {
         Button(role: .destructive) {
             viewModel.deleteTask(kidTask: kidTask)
-            dismiss()
+//            dismiss()
         } label: {
             VStack{
                 Image(systemName: "wrongwaysign.fill")

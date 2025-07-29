@@ -55,6 +55,15 @@ final class CoreDataController {
         return kidTask
     }
     
+    public func createScheduledNotification(id: UUID, date: Date) -> ScheduledNotification {
+        let scheduledNotification: ScheduledNotification = ScheduledNotification(context: viewContext)
+        scheduledNotification.id = id
+        scheduledNotification.date = date
+        saveContext()
+        
+        return scheduledNotification
+    }
+    
     //READ
     func fetchAllTasks() -> [KidTask]{
         let fetchRequest: NSFetchRequest<KidTask> = KidTask.fetchRequest()
@@ -64,6 +73,19 @@ final class CoreDataController {
             return result
         } catch {
             print("Error fetching Client: \(error.localizedDescription)")
+            return []
+        }
+    }
+    
+    public func fetchScheduledNotifications() -> [ScheduledNotification] {
+        let fetchRequest: NSFetchRequest<ScheduledNotification> = ScheduledNotification.fetchRequest()
+        
+        do {
+            let result = try viewContext.fetch(fetchRequest)
+            return result
+        }
+        catch {
+            print("[WARNING]: Failed to fetch scheduled notifications (\(error.localizedDescription))")
             return []
         }
     }
@@ -106,6 +128,11 @@ final class CoreDataController {
     func deleteTask(kidTask: KidTask){
         viewContext.delete(kidTask)
         
+        saveContext()
+    }
+    
+    public func deleteNotification(scheduledNotification: ScheduledNotification) {
+        viewContext.delete(scheduledNotification)
         saveContext()
     }
 }

@@ -17,7 +17,7 @@ struct InsertPasswordView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    @State private var showingSheet = false
+    @State private var x: Bool = false
     
     @ObservedObject var viewModel = ContentViewModel()
     
@@ -43,9 +43,9 @@ struct InsertPasswordView: View {
                     Button("GO!") {
                         if (password3 == password) {
                             
-                            showingSheet.toggle()
+                            x.toggle()
                             
-                            dismiss()
+//                            dismiss()
                             
                             
                         } else {
@@ -53,11 +53,10 @@ struct InsertPasswordView: View {
                         }
                             
                     }
-                    .sheet(isPresented: $showingSheet, onDismiss: {
-                        viewModel.getTask()
-                    }) {
+                    .navigationDestination(isPresented: $x) {
                         ChangeSettings()
                     }
+                    
                     
                 }
                 

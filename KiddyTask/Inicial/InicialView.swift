@@ -25,6 +25,9 @@ struct InicialView: View {
                 }
                 .padding(.top, 100)
             }
+            .onAppear {
+                NotificationManagerModel.requirePermissions()
+            }
             
         }
        

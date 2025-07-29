@@ -14,12 +14,14 @@ struct TaskDetails: View {
     
     @State var timeRemaining: Int
     
-    let timer = Timer.publish(every: 1, on: .main, in: .common)/*.autoconnect()*/
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
+    @State var isStart: Bool = false
     
     init(viewModel: ContentViewModel = ContentViewModel(), task: KidTask, timeRemaining: Int) {
         self.viewModel = viewModel
         self.task = task
-        self.timeRemaining = Int(task.taskTime)
+        self.timeRemaining = Int(task.taskTime * 60)
     }
     
     var body: some View {
@@ -33,7 +35,7 @@ struct TaskDetails: View {
                             .resizable()
                             .frame(width: 350, height: 350)
                             .cornerRadius(24)
-                            
+                        
                     }
                     .padding()
                     
@@ -43,18 +45,18 @@ struct TaskDetails: View {
                                 .frame(width: 300, height: 100)
                             Image("guardianDuvida")
                         }
-//                        .padding()
+                        //                        .padding()
                         
                         Text(task.why ?? "noAnswer")
                             .frame(width: 300, height: 100)
-//                            .border(.red)
+                        //                            .border(.red)
                         
                         Text("Task Description 🖍️")
                             .frame(width: 200, height: 100)
                         
                         Text(task.desc ?? "noDescriptionposs")
                             .frame(width: 300, height: 100)
-//                            .border(.red)
+                        //                            .border(.red)
                     }
                     .padding(.leading, 30)
                 }
@@ -80,21 +82,33 @@ struct TaskDetails: View {
                         
                         VStack{
                             Text("Time to do this task ⏰")
-                                .onReceive(timer) { _ in
-                                    if timeRemaining > 0 {
-                                        timeRemaining -= 1
+                            
+                            Text(timeString(from: Int(timeRemaining)))
+                                .onReceive(timer) { time in
+                                    if isStart{
+                                        if timeRemaining > 0 {
+                                            timeRemaining -= 1
+                                        }
                                     }
                                 }
                             
-//                            Button("\(timeRemaining)") {
-//                                timer.connect()
-//                            }
-                            Button {
-                                timer.connect()
-                            } label: {
-                                Image(systemName: "play.circle.fill")
-                                Text("\(timeRemaining)")
-                            }
+                            //                            Button("\(timeRemaining)") {
+                            //                                timer.connect()
+                            //                            }
+                            //                            Button {
+                            //                                timer.connect()
+                            //                            } label: {
+                            //                                Image(systemName: "play.circle.fill")
+                            //                                Text("\(timeRemaining)")
+                            //                            }
+                            
+                            Button (action: {
+                                
+                                isStart.toggle()
+                                
+                            }, label: {
+                                Text( isStart ? "Stop" : "Start")
+                            })
                         }
                     }
                 }

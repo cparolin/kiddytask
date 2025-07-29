@@ -70,6 +70,8 @@ struct AddTaskView: View {
                     .padding()
                     .frame(width: 100, height: 30)
                 
+                
+                
             }
             .alert("You need to add an Image!", isPresented: $showingAlert){
                 Button("OK", role: .cancel) {}
