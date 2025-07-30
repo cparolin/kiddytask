@@ -35,6 +35,7 @@ struct AddTaskView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 
                 Text("Foto Antes 📷")
+                    .font(.system(size: 20).weight(.semibold))
                 
                 PhotosPicker("Choose a picture!", selection: $pickerImage, matching: .images)
                 if imageBefore != nil{
@@ -47,23 +48,27 @@ struct AddTaskView: View {
                 
                 TextField("Task Description!", text: $desc, axis: .vertical)
                     .frame(width: 250, height: 50)
+                    .font(.system(size: 20).weight(.semibold))
                     .multilineTextAlignment(.center)
                     .lineLimit(5)
 //                    .border(.red)
                 
                 HStack{
                     Text("Why is important to do this task?")
+                        .font(.system(size: 20).weight(.semibold))
                     Image("guardianDuvida")
                         .padding()
                 }
                 
                 TextField("Insert yout answer!", text: $why, axis: .vertical)
                     .frame(width: 250, height: 50)
+                    
                     .multilineTextAlignment(.center)
                     .lineLimit(3)
 //                    .border(.red)
 
-                Text("Time to conclude this task ⏰")
+                Text("Time to conclude this task (in minutes) ⏰")
+                    .font(.system(size: 20).weight(.semibold))
                 
                 TextField("Enter your time", value: $taskTime, format: .number)
                     .textFieldStyle(.roundedBorder)

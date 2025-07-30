@@ -18,8 +18,14 @@ class ContentViewModel: ObservableObject {
         kidTasks = CoreDataController.shared.fetchAllTasks()
     }
     
-    func getTaskCount() -> Int {
-        return kidTasks.count
+    func getTaskCount(todayOnly: Bool = false) -> Int {
+        if todayOnly {
+            return kidTasks.filter({ task in
+                Calendar.current.isDateInToday(task.taskDate ?? Date.distantPast)
+            }).count
+        } else {
+            return kidTasks.count
+        }
     }
     
     func getTaskDate() -> [KidTask] {

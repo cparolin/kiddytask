@@ -40,9 +40,18 @@ struct HomeView: View {
                     ForEach(viewModel.kidTasks, id: \.self) { kidTask in
                         if Calendar.current.isDateInToday(kidTask.taskDate ?? Date.distantPast) {
                             TaskRectangleView(kidTask: kidTask)
-                                .swipeActions (edge: .trailing) {
-                                    deleteAction(kidTask: kidTask)
-                                }
+                                .swipeActions (content: {
+                                    Button(role: .destructive) {
+                                        viewModel.deleteTask(kidTask: kidTask)
+                                        viewModel.getTask()
+                                    } label: {
+                                        VStack{
+                                            Image(systemName: "trash.circle.fill")
+                                            Text("Delete")
+                                        }
+                                    }
+                                    .tint(.red)
+                                })
                                 .swipeActions (edge: .leading) {
                                     seeTheTask(kidTask: kidTask)
                                 }
@@ -83,20 +92,10 @@ struct HomeView: View {
             .onAppear(){
                 viewModel.getTask()
             }
+//            .onChange(of: viewModel.kidTasks) { oldValue, newValue in
+//                viewModel.getTask()
+//            }
         }
-    }
-    
-    private func deleteAction(kidTask: KidTask) -> some View {
-        Button(role: .destructive) {
-            viewModel.deleteTask(kidTask: kidTask)
-//            dismiss()
-        } label: {
-            VStack{
-                Image(systemName: "wrongwaysign.fill")
-                Text("Delete")
-            }
-        }
-        .tint(.red)
     }
     
     private func seeTheTask(kidTask: KidTask) -> some View {

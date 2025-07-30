@@ -18,10 +18,10 @@ struct MemoriesView: View {
                 NavigationLink(destination: PagesCarousel() /*PageMemoriesView()*/) {
                     ZStack{
                         Image("Caderno")
-                        Text("\(kidUsername)")
+                        Text("\(kidUsername)'s")
                             .font(.system(size: 60))
                             .foregroundStyle(Color("MemoriesPurple"))
-                            .padding(.bottom, 140)
+                            .padding(.bottom, 430)
                     }
                 }
             }

@@ -18,7 +18,8 @@ struct PagesCarousel: View {
 //                    if Calendar.current.isDate(kidTask.taskDate, equalTo: Date.now, toGranularity: .day) {
                         PageMemoriesView(task: kidTask)
                             .tabItem{
-                                Label(kidTask.name ?? "", systemImage: "book")
+                                Label(kidTask.name ?? "", systemImage: "circle.fill")
+                                    .foregroundStyle(Color("CarouselColor"))
                             }
 //                    }
                 }

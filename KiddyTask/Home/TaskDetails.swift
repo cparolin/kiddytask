@@ -29,7 +29,8 @@ struct TaskDetails: View {
             VStack{
                 HStack{
                     VStack{
-                        Text("Picture Before 📷")
+                        Text("Before Pic 📷")
+                            .font(.system(size: 20).weight(.semibold))
                         
                         Image(uiImage: ((UIImage(data: task.imageBefore ?? Data()) ?? UIImage(named: "photoItem")) ?? UIImage()))
                             .resizable()
@@ -42,7 +43,9 @@ struct TaskDetails: View {
                     VStack{
                         HStack{
                             Text("Why it's important to do this task?")
-                                .frame(width: 300, height: 100)
+                                .frame(width: 315, height: 100)
+                                .font(.system(size: 20).weight(.semibold))
+                            
                             Image("guardianDuvida")
                         }
                         //                        .padding()
@@ -53,6 +56,7 @@ struct TaskDetails: View {
                         
                         Text("Task Description 🖍️")
                             .frame(width: 200, height: 100)
+                            .font(.system(size: 20).weight(.semibold))
                         
                         Text(task.desc ?? "noDescriptionposs")
                             .frame(width: 300, height: 100)
@@ -70,6 +74,8 @@ struct TaskDetails: View {
                             .foregroundStyle(Color("FrontYellow"))
                         VStack{
                             Text("Date to do the task 📅")
+                                .font(.system(size: 20).weight(.semibold))
+                            
                             Text("\(task.taskDate?.formatted(date: .long, time: .omitted) ?? "noData")")
                         }
                     }
@@ -82,6 +88,8 @@ struct TaskDetails: View {
                         
                         VStack{
                             Text("Time to do this task ⏰")
+                                .font(.system(size: 20).weight(.semibold))
+                                .padding(.bottom, 100)
                             
                             Text(timeString(from: Int(timeRemaining)))
                                 .onReceive(timer) { time in
@@ -108,6 +116,7 @@ struct TaskDetails: View {
                                 
                             }, label: {
                                 Text( isStart ? "Stop" : "Start")
+                                    .padding(.top, 50)
                             })
                         }
                     }

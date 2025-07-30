@@ -54,7 +54,7 @@ struct InsertPasswordImageView: View {
                 if imageAfter != nil{
                     Image(uiImage: imageAfter!)
                         .resizable()
-                        .frame(width: 150, height: 150)
+                        .frame(width: 250, height: 250)
                         .scaledToFill()
                         .cornerRadius(20)
                 }

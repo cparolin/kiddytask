@@ -27,39 +27,67 @@ struct GuardianView: View {
     
     var body: some View {
         NavigationStack{
-//            Text("\(viewModel.getTaskCount() / 2)")
-//            Text("\(viewModel.getTaskCount()), x = \(x), outro = \(guardianNum)")
-            if viewModel.getTaskCount() == guardianNum {
-                VStack {
-                    Image ("GuardianGrande")
-                    Text ("Parabéns \(kidUsername)!  Seus papais me contaram que você fez todas as suas atividades de hoje, sua casa está linda! Deve ser muito bom ter você na família, que tal dar um grande abraço nos papais?")
-                }
-            } else if guardianNum >= viewModel.getTaskCount() / 2 && guardianNum != 0 {
-                VStack{
-                    Image("GuardianSemiGrande")
-                    Text ("""
-                              O(A) \(kidUsername) está quase lá!  Seus papais me contaram que falta muito pouco para você terminar todas as suas atividades de hoje! Tenho certeza que o(a) \(kidUsername) consegue!
+            VStack{
+                //            Text("\(viewModel.getTaskCount() / 2)")
+                //            Text("\(viewModel.getTaskCount()), x = \(x), outro = \(guardianNum)")
+                if viewModel.getTaskCount(todayOnly: true) == guardianNum {
+                    VStack {
+                        Image ("GuardianGrande")
+                        Text ("""
+                    Congratulations, \(kidUsername)!
+                    Your parents told me that you completed all your activities today — your home looks beautiful!
+                    It must be wonderful to have you in the family. How about giving your parents a big hug?
+                    """)
+                        .frame(width: 700, height: 350)
+                        //                        .border(.red)
+                        .font(.system(size: 30).weight(.medium))
+                        
+                    }
+                } else if guardianNum >= viewModel.getTaskCount(todayOnly: true) / 2 && guardianNum != 0 {
+                    VStack{
+                        Image("GuardianSemiGrande")
+                        Text ("""
+                            \(kidUsername) is almost there!
+                            Your parents told me that you're very close to finishing all your activities for today!
+                            I'm sure \(kidUsername) can do it!
                             """)
-                }
-            } else if guardianNum < viewModel.getTaskCount() / 2 && guardianNum != 0 {
-                VStack{
-                    Image("GuardianQuaseGrande")
-                    Text ("""
-                              O(A) \(kidUsername) já começou as atividades dele(a)! Agora é só ele(a) continuar por esse caminho que rapidinho as tarefas dele(a) terminam! Eu acredito em você \(kidUsername)! 
+                        .frame(width: 700, height: 350)
+                        //                    .border(.red)
+                        .font(.system(size: 30).weight(.medium))
+                        
+                    }
+                } else if guardianNum < viewModel.getTaskCount(todayOnly: true) / 2 && guardianNum != 0 {
+                    VStack{
+                        Image("GuardianQuaseGrande")
+                        Text ("""
+                                \(kidUsername) has already started their activities!
+                                Now they just need to keep going, and their tasks will be done in no time!
+                                I believe in you, (kidUsername)!       
+                                """)
+                        .frame(width: 700, height: 350)
+                        //                    .border(.red)
+                        .font(.system(size: 30).weight(.medium))
+                        
+                    }
+                } else {
+                    VStack{
+                        Image("GuardianTristeGrande")
+                        Text ("""
+                            \(kidUsername) hasn't started their activities yet?
+                            How strange! That’s their responsibility.
+                            Do you think they’ll be able to complete their tasks?
+                            Why haven’t they started yet?
+                            They’re so brave!
+                            
                             """)
-                }
-            } else {
-                VStack{
-                    Image("GuardianTristeGrande")
-                    Text ("""
-                              O(A) \(kidUsername) ainda não começou as atividades?
-                              Que estranho! Isso é responsabilidade só dele(a).
-                              Será que ele(a) vai conseguir fazer as tarefas dele(a)?
-                              Porque será que ele(a) ainda não começou ? Ele(a) é tão corajoso(a)!
-
-                            """)
+                        .frame(width: 700, height: 350, alignment: .center)
+                        //                    .border(.red)
+                        .font(.system(size: 30).weight(.medium))
+                        
+                    }
                 }
             }
+            .navigationTitle("Guardian")
         }
         .onAppear{
             viewModel.getTask()
