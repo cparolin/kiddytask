@@ -100,16 +100,6 @@ struct TaskDetails: View {
                                     }
                                 }
                             
-                            //                            Button("\(timeRemaining)") {
-                            //                                timer.connect()
-                            //                            }
-                            //                            Button {
-                            //                                timer.connect()
-                            //                            } label: {
-                            //                                Image(systemName: "play.circle.fill")
-                            //                                Text("\(timeRemaining)")
-                            //                            }
-                            
                             Button (action: {
                                 
                                 isStart.toggle()
