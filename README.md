@@ -1,6 +1,6 @@
 # KiddyTask - iOS App
 
-## 🔎 Sobre o Projeto�
+## 🔎 Sobre o Projeto
 Este é um aplicativo iOS desenvolvido pro mim, Camila Parolin, cujo principal objetivo é integrar crianças nas atividades diárias de suas casas. Nele pais e seus filhos podem interagir com o aplicativo de diferentes formas, adicionando novas atividades, checando seus detalhes, tudo isso interagindo com Guardian, um personagem presente em toda a atmosfera. Nele utilizamos de **SwiftUI**, **Swift** E **CoreData**
 
 ## 🎯 Objetivo 
@@ -9,7 +9,7 @@ Este é um aplicativo iOS desenvolvido pro mim, Camila Parolin, cujo principal o
 - Publicar um aplicativo na AppStore
 - Programar toda a lógica do aplicativo
 
-## 👤 Desenvolvedora �
+## 👤 Desenvolvedora
 
 <b> Camila Parolin </b> <a href="https://www.linkedin.com/in/camila-parolin-70a437333"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/></a><a href="https://github.com/cparolin"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/></a> 
 
