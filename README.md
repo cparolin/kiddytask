@@ -11,10 +11,7 @@ Este é um aplicatiov iOS desenvolvido pro mim, Camila Parolin, cujo principal o
 
 ## Desenvolvedor
 
-<b> Camila Parolin </b> <a href="https://www.linkedin.com/in/camila-parolin-70a437333"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/></a><a href="https://github.com/cparolin"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/></a> <br> <br>
-Camila Parolin 
-Linkedin
-GitHub
+<b> Camila Parolin </b> <a href="https://www.linkedin.com/in/camila-parolin-70a437333"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/></a><a href="https://github.com/cparolin"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/></a> 
 
 ## Screenshots
 <img width="580" height="701" alt="Captura de Tela 2025-08-04 às 14 37 48" src="https://github.com/user-attachments/assets/e295c994-9128-4335-a7d2-095637c1a7f4" />
