@@ -18,6 +18,7 @@ class ContentViewModel: ObservableObject {
         kidTasks = CoreDataController.shared.fetchAllTasks()
     }
     
+    //fetch que conta ou as tasks apenas de hoje ou as tasks num geral
     func getTaskCount(todayOnly: Bool = false) -> Int {
         if todayOnly {
             return kidTasks.filter({ task in
@@ -28,6 +29,7 @@ class ContentViewModel: ObservableObject {
         }
     }
     
+    //um fetch apenas da data de cada task
     func getTaskDate() -> [KidTask] {
         return kidTasks.filter { task in
             task.taskDate == Date.now
@@ -55,10 +57,12 @@ class ContentViewModel: ObservableObject {
         let result = CoreDataController.shared.updateTask(kidTask: kidTask, taskDate: taskDate, desc: desc, imageAfter: imageAfter, imageBefore: imageBefore, isDone: isDone, name: name, taskTime: taskTime, why: why)
     }
     
+    //update apenas apenas se esta feita ou nao
     func updateBool(kidTask: KidTask, isDone: Bool) {
         let result = CoreDataController.shared.updateBool(kidTask: kidTask, isDone: isDone)
     }
     
+    //update apenas a imagem após terminar a atividade
     func updateImageAfter(kidTask: KidTask, imageAfter: UIImage) {
         let result = CoreDataController.shared.updateAfterImage(kidTask: kidTask, imageAfter: imageAfter)
     }
