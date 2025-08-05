@@ -49,7 +49,7 @@ struct ChangeSettings: View {
                     }
                     Section(header: Text("Notifications")){
                     
-                        Toggle("Notificações Diárias", isOn: $reminders)
+                        Toggle("Daily Notifications", isOn: $reminders)
                         
                         
                 
@@ -69,7 +69,7 @@ struct ChangeSettings: View {
                                     didSendNotification = true
             
                             } label: {
-                                Text("Salvar")
+                                Text("Save")
                                     .fontWeight(.bold)
                                 
                             }
@@ -92,7 +92,7 @@ struct ChangeSettings: View {
                             reminders = false
                             
                         } label: {
-                                Text("Desativar Notificações")
+                                Text("Disable Notifications")
                                     .fontWeight(.bold)
                         }
                         .alert(isPresented: $noNotification) {

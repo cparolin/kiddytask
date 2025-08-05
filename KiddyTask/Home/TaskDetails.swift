@@ -75,8 +75,11 @@ struct TaskDetails: View {
                         VStack{
                             Text("Date to do the task 📅")
                                 .font(.system(size: 20).weight(.semibold))
+                                .padding(.bottom, 100)
+                                .foregroundStyle(Color("MemoriesText"))
                             
                             Text("\(task.taskDate?.formatted(date: .long, time: .omitted) ?? "noData")")
+                                .foregroundStyle(Color("MemoriesText"))
                         }
                     }
                     .padding(.trailing, 30)
@@ -90,8 +93,11 @@ struct TaskDetails: View {
                             Text("Time to do this task ⏰")
                                 .font(.system(size: 20).weight(.semibold))
                                 .padding(.bottom, 100)
+                                .foregroundStyle(Color("MemoriesText"))
                             
                             Text(timeString(from: Int(timeRemaining)))
+                                .foregroundStyle(Color("MemoriesText"))
+                                .font(.system(size: 20))
                                 .onReceive(timer) { time in
                                     if isStart{
                                         if timeRemaining > 0 {
