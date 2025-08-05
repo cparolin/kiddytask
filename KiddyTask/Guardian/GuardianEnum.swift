@@ -12,4 +12,5 @@ enum GuardianCases {
     case quaseTodasCompletas
     case algumasFeitas
     case nenhumaCompleta
+    case nenhumaTask
 }

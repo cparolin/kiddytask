@@ -21,17 +21,17 @@ struct ContentView: View {
         } else{
             
             TabView{
-                MemoriesView()
-                    .tabItem{
-                        Label("Memories", systemImage: "book")
-                    }
                 HomeView()
                     .tabItem{
-                        Label("Home", systemImage: "book")
+                        Label("Home", systemImage: "house")
+                    }
+                MemoriesView()
+                    .tabItem{
+                        Label("Memories", systemImage: "lightbulb.max")
                     }
                 GuardianView()
                     .tabItem{
-                        Label("Guardian", systemImage: "book")
+                        Label("Guardian", systemImage: "figure")
                     }
             }
             

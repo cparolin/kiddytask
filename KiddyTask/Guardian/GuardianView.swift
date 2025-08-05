@@ -33,12 +33,14 @@ struct GuardianView: View {
         
         let today = viewModel.getTaskCount(todayOnly: true)
         
-        if doneToday == today {
+        if doneToday == today && today != 0 {
             return .todasCompletas
         } else if doneToday >= today / 2 && doneToday != 0 {
             return .quaseTodasCompletas
         } else if doneToday < today / 2 && doneToday != 0 {
             return .algumasFeitas
+        } else if today == 0 {
+            return .nenhumaTask
         } else {
             return .nenhumaCompleta
         }
@@ -104,6 +106,22 @@ struct GuardianView: View {
                             """
                         )
                         .frame(width: 700, height: 350)
+                        //                    .border(.red)
+                        .font(.system(size: 30).weight(.medium))
+                        
+                    }
+                } else if checkCases == .nenhumaTask {
+                    VStack {
+                        Image("GuardianGrande")
+                        Text(
+                            """
+                            There are no tasks for \(kidUsername) to do today!
+                            Feel free to have fun and play as mush as you want!
+                            If new activities come up, stay sharp, I'll be right here waiting for you!
+
+                            """
+                        )
+                        .frame(width: 700, height: 350, alignment: .center)
                         //                    .border(.red)
                         .font(.system(size: 30).weight(.medium))
 

@@ -41,6 +41,11 @@ struct InsertPasswordView: View {
             .toolbar {
                 ToolbarItem(placement: .confirmationAction){
                     Button("GO!") {
+//                        #if DEBUG
+//                        x.toggle()
+//                        return
+//                        #endif
+                        
                         if (password3 == password) {
                             
                             x.toggle()
