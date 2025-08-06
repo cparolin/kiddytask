@@ -11,6 +11,13 @@ struct PagesCarousel: View {
     
     @ObservedObject var viewModel = ContentViewModel()
     
+    init() {
+        #if canImport(UIKit)
+        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color("CarouselColor"))
+        UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color("PagePassColor"))
+        #endif
+    }
+    
     var body: some View {
         NavigationStack{
             TabView{

@@ -15,6 +15,7 @@ struct AddTaskView: View {
     @State var name: String = "Task Name"
     @State var date = Date.now
     @State var pickerImage: PhotosPickerItem?
+    @State var photoItem2: PhotosPickerItem?
     @State var imageBefore: UIImage?
     @State var imageAfter: UIImage?
     @State var desc: String = ""
@@ -27,31 +28,62 @@ struct AddTaskView: View {
     var body: some View {
         
         NavigationStack{
-            VStack{
-                DatePicker(selection: $date,  displayedComponents: .date){
-                    /*Text("Select a date")*/ //deixar centralizado
+            VStack {
+                HStack {
+                    //                VStack {
+                    //                    Spacer()
+                    //                        .frame(width: 50)
+                    
+                    
+                    //                Divider()
+                    VStack{
+                        Text("Before Pic 📷")
+                            .font(.system(size: 20).weight(.semibold))
+                        
+                        Spacer()
+                            .frame(height: 8)
+                        
+                        PhotosPicker(selection: $photoItem2, matching: .images){
+                            ImageAddPicture2(photoItem2: $photoItem2)
+                        }
+                        if imageBefore != nil{
+                            Image(uiImage: imageBefore!)
+                                .resizable()
+                                .frame(width: 150, height: 150)
+                                .scaledToFill()
+                                .cornerRadius(20)
+                        }
+                        
+                        
+                        
+                        TextField("Task Description!", text: $desc, axis: .vertical)
+                            .frame(width: 250, height: 50)
+                            .font(.system(size: 20).weight(.semibold))
+                            .multilineTextAlignment(.center)
+                            .lineLimit(5)
+                        //                    .border(.red)
+                    }
+//                    Spacer()
+//                        .frame(width: 10)
+                    
+                    VStack{
+                        Text("Date to do the task:")
+                            .font(.system(size: 20).weight(.semibold))
+                        
+                        HStack{
+                            //                    Spacer()
+                            //                        .frame(width: 100)
+                            DatePicker(selection: $date,  displayedComponents: .date){
+                            }
+                            .navigationTitle($name)
+                            .navigationBarTitleDisplayMode(.inline)
+                            Spacer()
+                                .frame(width: 100)
+                        }
+                    }
                 }
-                .navigationTitle($name)
-                .navigationBarTitleDisplayMode(.inline)
                 
-                Text("Foto Antes 📷")
-                    .font(.system(size: 20).weight(.semibold))
-                
-                PhotosPicker("Choose a picture!", selection: $pickerImage, matching: .images)
-                if imageBefore != nil{
-                    Image(uiImage: imageBefore!)
-                        .resizable()
-                        .frame(width: 150, height: 150)
-                        .scaledToFill()
-                        .cornerRadius(20)
-                }
-                
-                TextField("Task Description!", text: $desc, axis: .vertical)
-                    .frame(width: 250, height: 50)
-                    .font(.system(size: 20).weight(.semibold))
-                    .multilineTextAlignment(.center)
-                    .lineLimit(5)
-//                    .border(.red)
+//                Divider()
                 
                 HStack{
                     Text("Why is important to do this task?")
@@ -67,6 +99,8 @@ struct AddTaskView: View {
                     .lineLimit(3)
 //                    .border(.red)
 
+//                Divider()
+                
                 Text("Time to conclude this task (in minutes) ⏰")
                     .font(.system(size: 20).weight(.semibold))
                 
@@ -99,9 +133,9 @@ struct AddTaskView: View {
                     }
                 }
             }
-            .onChange(of: pickerImage){ oldValue, newValue in
+            .onChange(of: photoItem2){ oldValue, newValue in
                 Task {
-                    guard let imageData = try await pickerImage?.loadTransferable(type: Data.self) else {return}
+                    guard let imageData = try await photoItem2?.loadTransferable(type: Data.self) else {return}
                     guard let inputImage = UIImage(data: imageData) else {return}
                     imageBefore = inputImage
                 }

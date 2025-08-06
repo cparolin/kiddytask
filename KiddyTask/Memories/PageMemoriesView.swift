@@ -25,7 +25,7 @@ struct PageMemoriesView: View {
                 
                 Rectangle()
                     .frame(width: 560, height: 751)
-                    .foregroundStyle(Color.white)
+                    .foregroundStyle(Color("PageColor"))
                 
                 VStack{
                     

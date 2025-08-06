@@ -28,9 +28,13 @@ struct TaskDetails: View {
         NavigationStack {
             VStack{
                 HStack{
+                    
+                    Spacer()
+                        .frame(width: 10)
+                    
                     VStack{
                         Text("Before Pic 📷")
-                            .font(.system(size: 20).weight(.semibold))
+                            .font(.system(size: 30).weight(.semibold))
                         
                         Image(uiImage: ((UIImage(data: task.imageBefore ?? Data()) ?? UIImage(named: "photoItem")) ?? UIImage()))
                             .resizable()
@@ -38,28 +42,34 @@ struct TaskDetails: View {
                             .cornerRadius(24)
                         
                     }
-                    .padding()
+//                    .padding()
                     
                     VStack{
                         HStack{
                             Text("Why it's important to do this task?")
                                 .frame(width: 315, height: 100)
-                                .font(.system(size: 20).weight(.semibold))
+                                .font(.system(size: 30).weight(.semibold))
+                                .multilineTextAlignment(.center)
                             
                             Image("guardianDuvida")
+                            
+                            Spacer()
+                                .frame(width: 10)
                         }
                         //                        .padding()
                         
                         Text(task.why ?? "noAnswer")
                             .frame(width: 300, height: 100)
+                            .font(.system(size: 25))
                         //                            .border(.red)
                         
                         Text("Task Description 🖍️")
-                            .frame(width: 200, height: 100)
-                            .font(.system(size: 20).weight(.semibold))
+                            .frame(width: 280, height: 100)
+                            .font(.system(size: 30).weight(.semibold))
                         
                         Text(task.desc ?? "noDescriptionposs")
                             .frame(width: 300, height: 100)
+                            .font(.system(size: 25))
                         //                            .border(.red)
                     }
                     .padding(.leading, 30)
@@ -74,12 +84,19 @@ struct TaskDetails: View {
                             .foregroundStyle(Color("FrontYellow"))
                         VStack{
                             Text("Date to do the task 📅")
-                                .font(.system(size: 20).weight(.semibold))
-                                .padding(.bottom, 100)
+                                .font(.system(size: 30).weight(.semibold))
+//                                .padding(.bottom, 100)
                                 .foregroundStyle(Color("MemoriesText"))
+                            
+                            Spacer()
+                                .frame(height: 90)
                             
                             Text("\(task.taskDate?.formatted(date: .long, time: .omitted) ?? "noData")")
                                 .foregroundStyle(Color("MemoriesText"))
+                                .font(.system(size: 25))
+                            
+                            Spacer()
+                                .frame(height: 125)
                         }
                     }
                     .padding(.trailing, 30)
@@ -91,13 +108,16 @@ struct TaskDetails: View {
                         
                         VStack{
                             Text("Time to do this task ⏰")
-                                .font(.system(size: 20).weight(.semibold))
-                                .padding(.bottom, 100)
+                                .font(.system(size: 30).weight(.semibold))
+//                                .padding(.bottom, 100)
                                 .foregroundStyle(Color("MemoriesText"))
+                            
+                            Spacer()
+                                .frame(height: 90)
                             
                             Text(timeString(from: Int(timeRemaining)))
                                 .foregroundStyle(Color("MemoriesText"))
-                                .font(.system(size: 20))
+                                .font(.system(size: 25))
                                 .onReceive(timer) { time in
                                     if isStart{
                                         if timeRemaining > 0 {
@@ -106,14 +126,19 @@ struct TaskDetails: View {
                                     }
                                 }
                             
+                            Spacer()
+                                .frame(height: 90)
+                            
                             Button (action: {
                                 
                                 isStart.toggle()
                                 
                             }, label: {
                                 Text( isStart ? "Stop" : "Start")
-                                    .padding(.top, 50)
+//                                    .padding(.top, 50)
+                                    .font(.system(size: 25))
                             })
+                            
                         }
                     }
                 }

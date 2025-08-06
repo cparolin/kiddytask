@@ -58,7 +58,6 @@ struct HomeView: View {
                                 .listRowSeparator(.hidden)
                         }
                     }
-//                    }
                 }
             }
             .navigationTitle("Home")

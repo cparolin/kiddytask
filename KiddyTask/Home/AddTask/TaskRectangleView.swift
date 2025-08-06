@@ -31,11 +31,11 @@ struct TaskRectangleView: View {
                 //nao estou usando da forma certa, a acima pois corta na hora de chamar a scrollview
                 
                 RoundedRectangle(cornerRadius: 20)
-                    .frame(width: 760, height: 160)
+                    .frame(width: UIScreen.main.bounds.width * 0.935, height: 160)
                     .foregroundStyle(Color("BackYellow"))
                 
                 RoundedRectangle(cornerRadius: 15)
-                    .frame(width: 750, height: 150)
+                    .frame(width: UIScreen.main.bounds.width * 0.920, height: 145)
                     .foregroundStyle(Color("FrontYellow"))
                 
                 HStack{
@@ -43,16 +43,20 @@ struct TaskRectangleView: View {
                     VStack{
                         Text(kidTask.name ?? "Tarefa 1") //variavel sera recebida de outra forma futuramente
                             .foregroundStyle(Color("TaskPurple"))
-                            .font(.system(size: 32).weight(.semibold))
-                            .padding(.bottom, 25) //distancia entre os textos
+                            .font(.system(size: 40).weight(.semibold))
+                            /*.padding()*/ //distancia entre os textos
+                        
+                        Spacer()
+                            .frame(height: 10)
                         
                         Text(kidTask.desc ?? "undefined")
                             .foregroundStyle(Color("TaskPurple"))
-                            .font(.system(size: 24))
+                            .font(.system(size: 30))
                     }
-                    //                .border(.red)
-                    /*.padding(180)*/ //distancia do circulo para o corpo de texto
                     
+                    Spacer()
+                        .frame(width: 400)
+                        
 
                         Button {
                             if kidTask.isDone == false{
@@ -65,7 +69,10 @@ struct TaskRectangleView: View {
                         } label: {
                             ZStack{
                                 Circle()
-                                    .frame(width: 50, height: 50)
+                                    .frame(width: 80, height: 80)
+                                    .foregroundStyle(Color("BackYellow"))
+                                Circle()
+                                    .frame(width: 70, height: 70)
                                     .foregroundStyle(Color.white)
                                 Image("Star")
                                     .opacity(kidTask.isDone ? 100 : 0)
@@ -75,6 +82,7 @@ struct TaskRectangleView: View {
 //                                .foregroundStyle(Color.white)
 //                            //                            .border(.red)
                         }
+                        .buttonStyle(.borderless)
                         .sheet(isPresented: $showingSheet, onDismiss: {
                             viewModel.getTask()
                         }) {
