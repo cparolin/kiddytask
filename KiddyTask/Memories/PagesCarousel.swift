@@ -12,29 +12,31 @@ struct PagesCarousel: View {
     @ObservedObject var viewModel = ContentViewModel()
     
     init() {
-        #if canImport(UIKit)
+#if canImport(UIKit)
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color("CarouselColor"))
         UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color("PagePassColor"))
-        #endif
+#endif
     }
     
     var body: some View {
         NavigationStack{
             TabView{
                 ForEach(viewModel.kidTasks, id: \.self) { kidTask in
-//                    if Calendar.current.isDate(kidTask.taskDate, equalTo: Date.now, toGranularity: .day) {
-                        PageMemoriesView(task: kidTask)
-                            .tabItem{
-                                Label(kidTask.name ?? "", systemImage: "circle.fill")
-                                    .foregroundStyle(Color("CarouselColor"))
-                            }
-//                    }
+                    //                    if Calendar.current.isDate(kidTask.taskDate, equalTo: Date.now, toGranularity: .day) {
+                    PageMemoriesView(task: kidTask)
+                        .tabItem{
+                            Label(kidTask.name ?? "", systemImage: "circle.fill")
+                                .foregroundStyle(Color("CarouselColor"))
+                        }
+                    //                    }
                 }
-                
             }
             .tabViewStyle(.page)
         }
         .onAppear {
+            viewModel.getTask()
+        }
+        .onChange(of: viewModel.kidTasks) { _, _ in
             viewModel.getTask()
         }
     }

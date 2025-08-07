@@ -18,13 +18,13 @@ struct ImageAddPicture2: View {
         if photoItem2 == nil {
             ZStack {
                 RoundedRectangle(cornerRadius: 30)
-                    .foregroundStyle(Color("PicImage"))
+                    .foregroundStyle(Color("PicImage2"))
                     .frame(width: 150, height: 150)
                 
                 Image(systemName: "photo")
                     .resizable()
                     .frame(width: 45, height: 30)
-                    .foregroundStyle(Color("PicImage2"))
+                    .foregroundStyle(Color("PicImage"))
                 
             }
         }

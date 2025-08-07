@@ -44,18 +44,22 @@ struct TaskRectangleView: View {
                         Text(kidTask.name ?? "Tarefa 1") //variavel sera recebida de outra forma futuramente
                             .foregroundStyle(Color("TaskPurple"))
                             .font(.system(size: 40).weight(.semibold))
+                            .frame(width: 550, height: 45)
+//                            .border(.red)
                             /*.padding()*/ //distancia entre os textos
                         
-                        Spacer()
-                            .frame(height: 10)
+//                        Spacer()
+//                            .frame(height: 10)
                         
                         Text(kidTask.desc ?? "undefined")
                             .foregroundStyle(Color("TaskPurple"))
                             .font(.system(size: 30))
+                            .frame(width: 550, height: 45)
+//                            .border(.red)
                     }
                     
                     Spacer()
-                        .frame(width: 400)
+                        .frame(width: 85)
                         
 
                         Button {

@@ -11,7 +11,11 @@ import PhotosUI
 struct PageMemoriesView: View {
     @ObservedObject var viewModel = ContentViewModel()
     
-    @State var task: KidTask
+    @Environment(\.dismiss) var dismiss
+    
+    let task: KidTask
+    
+    @State private var showingAlert = false
     
     var body: some View {
         VStack{
@@ -29,6 +33,37 @@ struct PageMemoriesView: View {
                 
                 VStack{
                     
+                    
+                    
+                    HStack{
+                        
+                        Spacer()
+                            .frame(width: 480)
+                        
+                        Button (){
+                            showingAlert = true
+                            
+                        } label: {
+                            Image(systemName: "trash")
+                                .foregroundStyle(Color.red)
+                        }
+                        .alert("Are you sure you want to delete this task?", isPresented: $showingAlert) {
+                            Button("Yes", role: .destructive) {
+                                viewModel.deleteTask(kidTask: task)
+                                viewModel.getTask()
+                            }
+                            Button("Cancel", role: .cancel) {}
+                        }
+                        
+                        
+                        
+                    }
+                    
+//                    Button {
+//                        viewModel.getTask()
+//                    } label: {
+//                        Image(systemName: "person.3.fill")
+//                    }
                     
                     Text("\(task.name ?? "noName")")
                         .font(.system(size: 60).weight(.semibold))
@@ -85,7 +120,22 @@ struct PageMemoriesView: View {
                 viewModel.getTask()
 //                print(viewModel.kidTasks)
             }
+//            .onChange(of: viewModel.kidTasks) { _, _ in
+//                            viewModel.getTask()
+//                        }
         }
+//        .toolbar {
+//            ToolbarItem(placement: .confirmationAction) {
+//                Button(role: .destructive) {
+//                    viewModel.deleteTask(kidTask: task)
+//                    viewModel.getTask()
+////                    dismiss()
+//                    //                    plate = nil
+//                }label:{
+//                    Image(systemName: "trash")
+//                }
+//            }
+//        }
     }
 }
 
